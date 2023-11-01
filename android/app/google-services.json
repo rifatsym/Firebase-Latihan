@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "815348220423",
+    "project_id": "fir-rifat",
+    "storage_bucket": "fir-rifat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815348220423:android:fdcd23acbb225fd515a0a2",
+        "android_client_info": {
+          "package_name": "com.rp.crud_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe8rxvjBlwYOq95f8vclNAWjokCwWDDqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
