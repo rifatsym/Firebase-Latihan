@@ -19,15 +19,33 @@ class HomeView extends GetView<HomeController> {
             colors: [Color(0xFFBF2C98), Color(0xFF8332A6)],
           ),
         ),
-        child: ListView(
-          scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Icon(
-              Icons.notifications_none,
-              size: 40,
-              color: Colors.white,
+            Padding(
+              padding: const EdgeInsets.only(top: 70, right: 11),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: Icon(
+                  Icons.notifications_none,
+                  size: 40,
+                  color: Colors.white,
+                ),
+              ),
             ),
-            Container()
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 70, right: 11),
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            ElevatedButton(
+                onPressed: () => authC.logout(), child: Text("logout"))
           ],
         ),
       ),

@@ -10,6 +10,7 @@ class LoginView extends GetView<LoginController> {
   final passC = TextEditingController();
 
   final authC = Get.find<AuthController>();
+  final LoginController controller = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +29,7 @@ class LoginView extends GetView<LoginController> {
                   height: 50,
                 ),
                 Container(
-                  padding: EdgeInsets.all(10), // Padding untuk Container
+                  padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.white,
@@ -46,21 +47,36 @@ class LoginView extends GetView<LoginController> {
                       TextField(
                         controller: emailC,
                         decoration: InputDecoration(
+                          prefixIcon:
+                              Icon(Icons.person, color: Color(0xFF8332A6)),
                           hintText: 'Email',
-                          border: InputBorder
-                              .none, // Menghapus border asli TextField
+                          border: InputBorder.none,
                         ),
                       ),
-                      Divider(), // Garis pemisah antara dua TextField
-                      TextField(
-                        controller: passC,
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                          border: InputBorder
-                              .none, // Menghapus border asli TextField
-                        ),
-                        obscureText: true,
-                      ),
+                      Divider(),
+                      Obx(() {
+                        return TextField(
+                          obscureText: controller.isObscure.value,
+                          decoration: InputDecoration(
+                            hintText: 'Password',
+                            prefixIcon: Icon(
+                              Icons.key_off,
+                              color: Color(0xFF8332A6),
+                            ),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                controller.isObscure.value
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: Color(0xFF8332A6),
+                              ),
+                              onPressed: () {
+                                controller.toggleVisibility();
+                              },
+                            ),
+                          ),
+                        );
+                      })
                     ],
                   ),
                 ),
