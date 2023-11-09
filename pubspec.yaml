@@ -6,13 +6,16 @@ environment:
   sdk: '>=3.1.3 <4.0.0'
 
 dependencies: 
+  cloud_firestore: ^4.12.1
   cupertino_icons: ^1.0.2
   firebase_auth: ^4.12.0
   firebase_core: 2.20.0
+  firebase_storage: ^11.4.0
   flutter: 
     sdk: flutter
   get: ^4.6.6
   get_cli: ^1.8.4
+  nb_utils: ^6.0.6
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
@@ -22,4 +25,5 @@ dev_dependencies:
 flutter:
   assets:
     - asset/Login_Image.png
+    - asset/home_image.png
   uses-material-design: true

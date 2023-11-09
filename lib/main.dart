@@ -2,6 +2,7 @@
 
 import 'package:crud_firebase/app/controllers/auth_controller.dart';
 import 'package:crud_firebase/app/modules/home/views/home_view.dart';
+import 'package:crud_firebase/app/modules/login/controllers/login_controller.dart';
 import 'package:crud_firebase/app/modules/login/views/login_view.dart';
 import 'package:crud_firebase/app/routes/app_pages.dart';
 import 'package:crud_firebase/app/utils/Loading.dart';
@@ -20,19 +21,19 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final authC = Get.put(AuthController(), permanent: true);
+  final authC = Get.put(LoginController(), permanent: true);
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
-      stream: authC.streamAuthStatus,
+      stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         print(snapshot.data);
         if (snapshot.connectionState == ConnectionState.active) {
           return GetMaterialApp(
             title: "aplication",
-            // initialRoute: snapshot.data != null ? Routes.HOME : Routes.LOGIN,
+            initialRoute: snapshot.data != null ? Routes.HOME : Routes.LOGIN,
             getPages: AppPages.routes,
-            home: snapshot.data != null ? HomeView() : LoginView(),
+            // home: snapshot.data != null ? HomeView() : LoginView(),
           );
         }
         return LoadingView();
